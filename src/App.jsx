@@ -1,18 +1,20 @@
 import React from 'react'
-import ImageEditor from './Components/ImageEditor'
-import FilterButtons from './Components/FilterButtons'
 import "./App.css"
-import Remove from './Components/Remove'
-import Navbar from './Components/Navbar'
-import Banner from './Components/Banner'
 import "./slider.css"
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
+import Home from './Pages/Home'
+import RemovePage from './Pages/RemovePage'
+import "./banner.css"
 
 const App = () => {
   return (
     <>
-     <Navbar/>
-     <Banner/>
-     <Remove/>
+    <Router>
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/remove' element={<RemovePage/>}/>
+      </Routes>
+    </Router>
     </>
   )
 }

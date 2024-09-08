@@ -2,6 +2,31 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #ffffff;
+  height: 100vh;
+  padding: 100px 0px;
+  position: relative;
+}
+.del_button{
+position: absolute;
+top: 50;
+right: 100px;
+cursor: pointer;
+z-index: 999999999;
+background-color:white;
+color: gray;
+outline: none;
+border: none;
+font-size: 2rem;
+transition: 0.2s ease-in-out;
+}
+.del_button:hover{
+  color: rgb(0, 0, 0);
+  }
+.image-editor .ie_title span{
+  font-size: 3rem;
+  font-weight: bold;
+  color: rgb(25, 25, 25);
 }
 
 .dropzone {
@@ -28,96 +53,57 @@
   height: 400px;
   width: auto;
   overflow: hidden;
+  border: 2px solid rgb(213, 204, 204);
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
 }
+.image-container .overlay{
+  position: absolute;
+  z-index: 2222222;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  gap: 10px;
+  color: white;
+}
+.image-container .overlay .ov_icon{
+  font-size: 3rem;
+  animation: ani 1s infinite ease;
+}
+@keyframes ani {
+  0%{
+    rotate: 0deg;
+  }
+  100%{
+    rotate: 360deg;
+  }
+}
+
 .image-container img {
   max-width: 100%;
   height: 100%;
   object-fit: contain;
 }
-
-.banner{
-  background-color: #ffffff;
-  height: 60vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-align-items: center;
-padding: 0px 400px;
-position: relative;
-background-color: #f5e1b6;
-margin-top: 70px;
-}
-.banner::after{
+.del_button{
   position: absolute;
-  content: "";
-  height: 250px;
-  width: 250px;
-  background-color: #f6bb3d;
-  left: -125px;
-  rotate: 45deg;
-  box-shadow: 5px 5px 20px rgb(0,0,0,0.2);
-}
-.banner::before{
-  position: absolute;
-  content: "";
-  height: 250px;
-  width: 250px;
-  background-color: #f6bb3d;
-  right: -125px;
-  bottom: -50px;
-  rotate: 45deg;
-  box-shadow: 5px 5px 20px rgb(0,0,0,0.2);
-  border-radius: 50%;
-}
-.banner .b_title{
-  display: flex;
-  flex-direction: column;
-}
-.banner span:nth-child(1){
-font-size: 4rem;
-font-weight: bold;
-width: 100%;
-line-height: 70px;
-}
-.banner span:nth-child(2){
-  font-size: 1.5rem;
-  margin-top: 10px;
-
-}
-.banner .b_image{
-  height: 100%;
-  padding: 50px;
-}
-.banner .b_image .image{
-  height: 250px;
-  width: 250px;
- padding: 20px;
-  position: relative;
-}
-.banner .b_image .image img{
-height: 100%;
-width: 100%;
-object-fit: cover;
-border: 2px dashed gray;
-border-radius: 10px;
-}
-
-.banner .b_image .image::after {
-  content: "";
-  position: absolute;
-  top: 150px;
-  left: 150px;
-  width: 200px;
-  height: 200px;
-  background-image: url(images/banner2.png);
-  background-size: cover;
-  background-position: center;
-  opacity: 1; /* Adjust opacity if needed */
-  z-index: 1;
-  border: 2px dashed gray;
-  border-radius: 10px;
-  box-shadow: 5px 5px 20px rgb(0,0,0,0.2);
-}
+  top: 75px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 999999999;
+  background-color:white;
+  color: gray;
+  outline: none;
+  border: none;
+  font-size: 1.6rem;
+  transition: 0.2s ease-in-out;
+  }
 
 .edit_cont{
   display: flex;
@@ -126,12 +112,13 @@ border-radius: 10px;
   align-items: center;
   min-height: 80vh;
   gap: 80px;
+  position: relative;
 }
 .edit_cont .edit_options{
   height: 400px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 }
 .edit_cont .edit_options button{
   height: 50px;
@@ -147,7 +134,7 @@ border-radius: 10px;
   border: 2px solid rgb(191, 190, 190);
   cursor: pointer;
 }
-.edit_cont .edit_options .filter-buttons, .background-color-picker , .download-button , .reset-button{
+.edit_cont .edit_options .filter-buttons, .background-color-picker , .download-button , .reset-button, .crop-button{
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -182,13 +169,15 @@ border-radius: 10px;
 .effects-dialog{
   position: absolute;
   background-color: white;
-  height: 400px;
-  width: 300px;
+  height: auto;
+  width: 250px;
   background-color: #ffffff;
   padding: 20px;
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-  z-index: 1000;
+  z-index: 99999;
+  left: 200px;
+  top: 120px;
 }
 
 .slider-container {
@@ -205,22 +194,48 @@ border-radius: 10px;
 
 .effects-dialog .close{
   position: absolute;
-  top: 0;
+  top: 0 !important;
   right: 0px;
   border: none !important;
   height: 20px;
   width: 20px;
   font-size: 1.5rem !important;
 }
-
+.cropper-controls{
+  display: flex;
+  gap: 10px;
+}
+.cropper-controls button{
+padding: 5px 10px;
+border: none;
+outline: none;
+}
+.cropper-controls button:nth-child(1){
+  background-color: rgb(32, 193, 32);
+  color: white;
+}
+.cropper-controls button:nth-child(2){
+  background-color: rgb(193, 32, 32);
+  color: white;
+}
 
 @media only screen and (max-width: 600px) {
   body{
     overflow-x: hidden;
   }
+
+  .image-editor{
+    width: 100%;
+    height: 100vh;
+}
+.image-editor .ie_title span{
+    font-size: 2rem;
+    font-weight: bold;
+    color: rgb(25, 25, 25);
+}
   .image-container{
     margin-top: 0px;
-    height: 100%;
+    height: 500px;
     margin-bottom: 150px;
     margin-top: 50px;
 
@@ -231,83 +246,16 @@ border-radius: 10px;
     object-fit: contain;
   }
   
-  .banner{
-    background-color: #ffffff;
-    height: auto;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 100px 40px;
-    position: relative;
-    background-color: #f5e1b6;
-    margin-top: 70px;
-    z-index: 1;
-  }
-  .banner::after{
-    position: absolute;
-    content: "";
-    height: 250px;
-    width: 250px;
-    background-color: #f6bb3d;
-    left: -125px;
-    rotate: 45deg;
-    top: 0;
-    box-shadow: 5px 5px 20px rgb(0,0,0,0.2);
-    z-index: -1;
-    /* opacity: 0; */
-  }
-  .banner::before{
-    height: 0px;
-    width: 0px;
-  
-  }
-
-  .banner span:nth-child(1){
-  font-size: 2.5rem;
-  line-height: 40px;
-  }
-  .banner span:nth-child(2){
-    font-size: 1.5rem;
-    margin-top: 10px;
-  
-  }
-  .banner .b_image{
-    height: 100%;
-    padding: 50px 10px;
-    width: 100%;
-  }
-  .banner .b_image .image{
-    height: 180px;
-    width: 180px;
-   padding: 0px;
-    position: relative;
-  }
-  .banner .b_image .image img{
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  border: 2px dashed gray;
-  border-radius: 10px;
-  }
-  
-  .banner .b_image .image::after {
-    top: 140px;
-    left: 100px;
-    width: 180px;
-    height: 180px;
-   
-  }
   .edit_cont{
     display: flex;
     width: 100%;
     justify-content: center;
     align-items: center;
-    height: auto;
+    height: 100vh;
     gap: 0px;
     padding: 0px 20px;
     position: relative;
+
    }
   .edit_cont .edit_options{
     height: 100px;
@@ -315,24 +263,40 @@ border-radius: 10px;
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    gap: 20px;
+    gap: 10px;
     width: 100%;
     position: absolute;
     z-index: 10000;
     bottom: 0px;
-    background-color: #fadd98;
+    padding: 0px 10px;
+    overflow-x: scroll;
+
+    
   }
   .edit_cont .edit_options button{
-    background-color: black;
-    color: white;
-    border: none;
+    background-color:rgb(255, 255, 255);
+    color: rgb(97, 85, 85);
+    border: 2px solid rgb(0, 0, 0);
     font-size: 1.5rem;
+    font-weight: 500;
+   
   }
-
+  .edit_cont .edit_options input{
+    margin-top: -3px;
+  }
+  .edit_cont .edit_options .filter-buttons, .background-color-picker , .download-button , .reset-button, .crop-button{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+    width: 100%;
+    scale: 0.9;
+  }
+  
   .edit_cont .edit_options .filter-buttons span,label{
-    font-size: 0.9rem;
-    display: none;
-    opacity: 0;
+    font-size: 0.6rem;
+    text-align: center;
+
   }
  
   #bg-color::-webkit-color-swatch {
@@ -346,14 +310,19 @@ border-radius: 10px;
   
   .effects-dialog{
     position: absolute;
-    height: 400px;
+    height: 200px;
     width: 100%;
-    background-color: #f6edd9;
-    padding: 20px;
+    background-color: #ffffff;
+    padding: 40px 20px;
     box-shadow: none;
-    border-radius: 10px;
-    z-index: 1000;
-    top: -400px;
+    border-radius: 0px;
+    z-index: 9999999999;
+    top:430px;
+    overflow-x: scroll;
+    border-bottom: 1px solid rgb(214, 214, 214);
+    border-top: 1px solid rgb(214, 214, 214);
+    right: 0;
+    left: 0;
   }
   
   .slider-container {
@@ -365,17 +334,22 @@ border-radius: 10px;
   .slider {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+
   }
   .slider label{
    opacity: 1;
+   font-size: 1.1rem;
   }
   .slider2 label{
     display: block;
     opacity: 1 !important;
+    font-size: 1.1rem;
   }
   .slider .slide{
     width: 100% !important;
+    margin: 5px;
   }
   
   .effects-dialog .close{
@@ -386,7 +360,7 @@ border-radius: 10px;
     height: 20px;
     width: 20px;
     font-size: 1.5rem !important;
-    background-color: #f6edd9 !important;
+    background-color: #ffffff !important;
     color: black !important;
   }
   .effects-dialog span{

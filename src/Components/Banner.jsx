@@ -10,6 +10,7 @@ const Banner = () => {
         </div>
         <div className="b_image">
             <div className="image"><img src="images/banner.jpg" alt="" /></div>
+            <div className="image2"><img src="images/banner2.png" alt="" /></div>
         </div>
      </section> 
     </>

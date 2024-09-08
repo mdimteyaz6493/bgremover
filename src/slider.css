@@ -28,6 +28,7 @@
     color: var(--icon-color);
     width: var(--icon-size);
     height: auto;
+    width: 100%;
   }
   
   .slider .slide {
@@ -43,7 +44,7 @@
     -o-transition: height var(--level-transition-duration);
     transition: height var(--level-transition-duration);
     cursor: inherit;
-    height: calc(var(--slider-height) * 2);
+    height: calc(var(--slider-height) * 3);
   }
   
   .slider .slide::-webkit-slider-thumb {
